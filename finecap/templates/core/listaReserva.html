@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Listas{% endblock %}
+
+{% block content %}
+<div class="mt-5">
+    <h2>Lista de Reservas</h2>
+
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+             
+                <th scope="col">CNPJ</th>
+                <th scope="col">Nome da empresa</th>
+                <th scope="col">Categoria da empresa</th>
+                <th scope="col">Opções</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+
+
+            {% for x in listReserva %}
+            <tr>
+               
+                <td>{{x.cnpj}} </td>
+                <td>{{x.nome_empresa}} </td>
+                <td>{{x.categoria_empresa}} </td>
+
+                <td>
+                    <a href="{% url 'editar' id=x.id %}"><i class="fas fa-edit"></i></a>
+                    <a href="{% url 'remover' id=x.id %}"><i class="fas fa-trash-alt"></i></a>
+                    <a href="{% url 'detalhe' id=x.id %}"><i class="fas fa-search"></i></a>
+                </td>
+
+
+            </tr>
+            {% endfor %}
+
+        </tbody>
+
+        <div class="mb-3">
+            <a href="{% url 'cadastro' %}" class="btn btn-primary">Adicionar Novo</a>
+        </div>
+
+
+</div>
+{% endblock %}
