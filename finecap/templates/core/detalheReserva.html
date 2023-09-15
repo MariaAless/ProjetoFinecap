@@ -19,12 +19,20 @@ Detalhes das Reservas
         <div class="card-body">
             <h5 class="card-title">CNPJ</h5>
             <p class="card-text">{{reserva.cnpj}}</p>
+
             <h5 class="card-title">Nome da empresa</h5>
             <p class="card-text">{{reserva.nome_empresa}}</p>
+
             <h5 class="card-title">Categoria da empresa</h5>
             <p class="card-text">{{reserva.categoria_empresa}}</p>
+           
             <h5 class="card-title">Esta quitado?</h5>
-            <p class="card-text">{{reserva.quitado}}</p>
+            {% if reserva.quitado %}
+            <p class="card-text">Pago</p>
+            {% else%}
+            <p class="card-text">Pendente</p>
+            {% endif %}
+
             <h5 class="card-title">Stand</h5>
             <p class="card-text">{{reserva.stand}}</p>
          
