@@ -15,18 +15,21 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from finecap.views import index, listaReserva,cadastroReserva,detalhe,editar, remover
+from django.urls import path, include
+#from finecap.views import index, listaReserva,cadastroReserva,detalhe,editar, remover
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',index, name="index"),
-    path('lista/',listaReserva, name='lista'),
-    path('cadastro/',cadastroReserva, name='cadastro'),
-    path('detalhe/<int:id>/',detalhe,name='detalhe'),
-    path('editar/<int:id>/',editar,name='editar'),
-    path('remover/<int:id>/',remover,name='remover'),
-
+    path('',include('finecap.urls')),
+    #para funções 
+    # path('',index, name="index"),
+    # path('lista/',listaReserva, name='lista'),
+    # path('cadastro/',cadastroReserva, name='cadastro'),
+    # path('detalhe/<int:id>/',detalhe,name='detalhe'),
+    # path('editar/<int:id>/',editar,name='editar'),
+    # path('remover/<int:id>/',remover,name='remover'),
+   
 
 
 ]

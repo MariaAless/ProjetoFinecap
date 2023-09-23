@@ -1,8 +1,12 @@
 {% extends "base.html" %}
 
+
 {% block title %}Listas{% endblock %}
 
 {% block content %}
+
+
+
 <div class="mt-5">
     <h2>Lista de Reservas</h2>
 
@@ -21,7 +25,7 @@
 
 
 
-            {% for x in listReserva %}
+            {% for x in reserva %}
             <tr>
                
                 <td>{{x.cnpj}} </td>
@@ -29,21 +33,36 @@
                 <td>{{x.categoria_empresa}} </td>
 
                 <td>
-                    <a href="{% url 'editar' id=x.id %}"><i class="fas fa-edit"></i></a>
-                    <a href="{% url 'remover' id=x.id %}"><i class="fas fa-trash-alt"></i></a>
-                    <a href="{% url 'detalhe' id=x.id %}"><i class="fas fa-search"></i></a>
+                    <a href="{% url 'update' x.pk %}"><i class="fas fa-edit"></i></a>
+                    <a href="{% url 'delete' x.pk %}"><i class="fas fa-trash-alt"></i></a>
+                    <a href="{% url 'detalhe' x.pk %}"><i class="fas fa-search"></i></a>
                 </td>
+
+                
+            
 
 
             </tr>
+           
+                {%empty%}
+                <p>Nenhuma reserva cadastrada</p>
+            
             {% endfor %}
-
         </tbody>
 
-        <div class="mb-3">
-            <a href="{% url 'cadastro' %}" class="btn btn-primary">Adicionar Novo</a>
-        </div>
-
+      
 
 </div>
+<div class="mb-3">
+    <a href="{% url 'criar' %}" class="btn btn-primary">Adicionar Novo</a>
+</div>
+{% if messages %}
+<ul  class="messages ">
+  {% for message in messages %}
+  <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
 {% endblock %}
