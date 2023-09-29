@@ -23,6 +23,7 @@ class listReserva(ListView):
     template_name = 'core/listaReserva.html'
     model = Reserva
     context_object_name = 'reserva'
+    paginate_by = 2
 
 
 
