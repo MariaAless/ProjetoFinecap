@@ -22,6 +22,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('finecap.urls')),
+    path('',include('stand.urls')),
     #para funções 
     # path('',index, name="index"),
     # path('lista/',listaReserva, name='lista'),

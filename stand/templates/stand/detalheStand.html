@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}
+Detalhes das Reservas
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <h1 class="display-4">Detalhe dos Stands</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">Localização</h5>
+            <p class="card-text">{{stand.localizacao}}</p>
+
+            <h5 class="card-title">Valor</h5>
+            <p class="card-text">{{reserva.valor}}</p>
+
+        
+        </div>
+      
+       
+    </div>
+    <a href="/listarStand" class="btn btn-secondary">Voltar</a>
+{% endblock %}

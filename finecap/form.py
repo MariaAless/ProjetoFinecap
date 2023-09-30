@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django import forms
-from .models import Reserva
+from .models import Reserva,Stand
 
 
 
@@ -16,5 +16,6 @@ class ReservaForm(ModelForm):
             'nome_empresa' : forms.TextInput(attrs={'class': 'form-control' }),
             'categoria_empresa' : forms.TextInput(attrs={'class': 'form-control' }),
             #'quitado' : forms.BooleanField(),
-            'stand' : forms.Select(attrs={'class': 'form-control'}),
+           # 'stand' : forms.Select(attrs={'class': 'form-control'}),
         }
+
