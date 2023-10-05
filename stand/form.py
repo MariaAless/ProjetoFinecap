@@ -8,8 +8,21 @@ class StandForm(ModelForm):
         model= Stand
         fields='__all__'
 
-        widgets = {
-            'localizacao' : forms.TextInput(attrs={'class': 'form-control'}),
-            'valor' : forms.TextInput(attrs={'class': 'form-control' }),
-            
-        }
+    localizacao=forms.CharField(
+        widget=forms.TextInput(attrs={
+            "class": "form-control ",
+            "placeholder": "Valor da localização",
+        })
+    )
+
+  
+    valor = forms.CharField(
+        widget=forms.TextInput(attrs={
+            "class": "form-control money",
+            "placeholder": "Valor do stand",
+        })
+    )
+
+    def clean_valor(self):
+        valor = self.cleaned_data["valor"]
+        return valor.replace(",", ".")
