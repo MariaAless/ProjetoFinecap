@@ -4,6 +4,7 @@ from django.views.generic import ListView,CreateView,DeleteView,DetailView, Upda
 from finecap.form import ReservaForm
 from django.urls import reverse_lazy
 from django.contrib.messages import views
+from users.permissions import GerentePermission
 
 
 #---------------------VIEWS COM CBV------------------------------------
@@ -17,9 +18,18 @@ class index(TemplateView):
         context['total_stands'] = Stand.objects.count()
         return context
 
+class index2(TemplateView):
+    template_name = "core/index2.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['total_reservas'] = Reserva.objects.count()
+        context['total_stands'] = Stand.objects.count()
+        return context
 
 
-class listReserva(ListView):
+
+class listReserva(GerentePermission,ListView):
     template_name = 'core/listaReserva.html'
     model = Reserva
     context_object_name = 'reserva'
@@ -28,7 +38,7 @@ class listReserva(ListView):
 
 
 #criar
-class Criar(views.SuccessMessageMixin,CreateView):
+class Criar(GerentePermission,views.SuccessMessageMixin,CreateView):
 
     form_class = ReservaForm
     template_name = 'core/formReserva.html'
@@ -36,7 +46,7 @@ class Criar(views.SuccessMessageMixin,CreateView):
     success_message = "Reserva criada com sucesso!"
 
 
-class Delete(views.SuccessMessageMixin,DeleteView):
+class Delete(GerentePermission,views.SuccessMessageMixin,DeleteView):
     model = Reserva
     template_name = 'core/confirm.html'
     success_url = reverse_lazy("listar")
@@ -46,7 +56,7 @@ class Delete(views.SuccessMessageMixin,DeleteView):
 
 
 
-class ReservaUpdateView(views.SuccessMessageMixin,UpdateView):
+class ReservaUpdateView(GerentePermission,views.SuccessMessageMixin,UpdateView):
   model = Reserva
   form_class = ReservaForm
   success_url = reverse_lazy("listar")
@@ -54,7 +64,7 @@ class ReservaUpdateView(views.SuccessMessageMixin,UpdateView):
   success_message = "Reserva atualizada com sucesso!"
 
 
-class ReservaDetalhe(DetailView):
+class ReservaDetalhe(GerentePermission,DetailView):
     model = Reserva
     template_name = "core/detalheReserva.html"
 

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+   <div class="container">
+        <div class="row">
+          <div class="col">
+            <!-- 1 of 3 --> 
+          </div>
+          <div class="col-12 mb-3">
+            <h4 class="text-center pt-4">Deseja desconectar?</h4>
+            <form class="text-center pt-4" method="post" action="{% url 'account_logout' %}">
+              {% csrf_token %} 
+              {% if redirect_field_value %}
+              <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+              {% endif %}
+              <button class="botão btn btn-primary" type="submit">{% trans 'Sim' %}</button>
+              <a class="btn btn-danger" href="{% url 'index2' %}">{% trans 'Cancelar' %}</a>
+
+            </form>   
+          </div>
+
+      
+        </div>
+    </div>
+
+{% endblock content %}

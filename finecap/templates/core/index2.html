@@ -1,0 +1,29 @@
+{% extends "base2.html" %}
+
+
+{% block content %}
+<div class="row mt-3">
+    <div class="col-md-4">
+      <div class="card text-white bg-primary mb-3">
+        <div class="card-header">Reservas</div>
+        <div class="card-body">
+          <h5 class="card-title">Total de Reservas</h5>
+          <p class="card-text">{{ total_reservas }}</p> <!-- Substitua pelo valor real -->
+        </div>
+      </div>
+    </div>
+
+    
+  <div class="col-md-4">
+    <div class="card text-white bg-success mb-3">
+      <div class="card-header">Stands</div>
+      <div class="card-body">
+        <h5 class="card-title">Total de stands</h5>
+        <p class="card-text">{{ total_stands }}</p> <!-- Substitua pelo valor real -->
+      </div>
+    </div>
+  </div>
+
+
+
+{% endblock %}

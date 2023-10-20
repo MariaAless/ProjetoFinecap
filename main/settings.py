@@ -84,7 +84,8 @@ AUTHENTICATION_BACKENDS = [
 
 WSGI_APPLICATION = 'main.wsgi.application'
 AUTH_USER_MODEL = "users.User"
-LOGIN_REDIRECT_URL = "index"
+LOGIN_REDIRECT_URL = "index2"
+LOGOUT_REDIRECT_URL = "index"
 
 
 
