@@ -4,6 +4,7 @@ from django.views.generic import ListView,CreateView,DeleteView,DetailView, Upda
 from stand.form import StandForm
 from django.urls import reverse_lazy
 from django.contrib.messages import views
+from users.permissions import GerentePermission
 
 
 #---------------------VIEWS COM CBV------------------------------------
@@ -21,7 +22,7 @@ class listStand(ListView):
 
 
 #criar
-class CriarStand(views.SuccessMessageMixin,CreateView):
+class CriarStand(GerentePermission,views.SuccessMessageMixin,CreateView):
 
     form_class = StandForm
     template_name = 'stand/formStand.html'
@@ -29,7 +30,7 @@ class CriarStand(views.SuccessMessageMixin,CreateView):
     success_message = "Stand criado com sucesso!"
 
 
-class Delete(views.SuccessMessageMixin,DeleteView):
+class Delete(GerentePermission,views.SuccessMessageMixin,DeleteView):
     model = Stand
     template_name = 'stand/confirmStand.html'
     success_url = reverse_lazy("stand:listarStand")
@@ -38,7 +39,7 @@ class Delete(views.SuccessMessageMixin,DeleteView):
 
 
 
-class StandUpdateView(views.SuccessMessageMixin,UpdateView):
+class StandUpdateView(GerentePermission,views.SuccessMessageMixin,UpdateView):
   model = Stand
   form_class = StandForm
   success_url = reverse_lazy("stand:listarStand")

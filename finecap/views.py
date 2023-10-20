@@ -29,7 +29,7 @@ class index2(TemplateView):
 
 
 
-class listReserva(GerentePermission,ListView):
+class listReserva(ListView):
     template_name = 'core/listaReserva.html'
     model = Reserva
     context_object_name = 'reserva'
@@ -38,7 +38,7 @@ class listReserva(GerentePermission,ListView):
 
 
 #criar
-class Criar(GerentePermission,views.SuccessMessageMixin,CreateView):
+class Criar(views.SuccessMessageMixin,CreateView):
 
     form_class = ReservaForm
     template_name = 'core/formReserva.html'
@@ -64,7 +64,7 @@ class ReservaUpdateView(GerentePermission,views.SuccessMessageMixin,UpdateView):
   success_message = "Reserva atualizada com sucesso!"
 
 
-class ReservaDetalhe(GerentePermission,DetailView):
+class ReservaDetalhe(DetailView):
     model = Reserva
     template_name = "core/detalheReserva.html"
 
