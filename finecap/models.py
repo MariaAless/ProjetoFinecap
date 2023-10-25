@@ -9,7 +9,6 @@ class Stand(models.Model):
     max_digits=6
 )
 
-
     def __str__(self):
         return self.localizacao
 
